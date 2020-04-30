@@ -1,0 +1,44 @@
+{
+  "name": "mgt-react",
+  "version": "0.3.0",
+  "description": "Microsoft Graph Toolkit React wrapper class",
+  "author": "metulev",
+  "license": "MIT",
+  "module": "dist/esm/index.js",
+  "main": "dist/esm/index.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "keywords": [
+    "react",
+    "microsoft graph toolkit",
+    "web components",
+    "mgt"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nmetulev/mgt-react"
+  },
+  "bugs": {
+    "url": "https://github.com/nmetulev/mgt-react/issues"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.32",
+    "@types/react-dom": "^16.9.6",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "typescript": "^3.8.3"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "singleQuote": true
+  },
+  "dependencies": {
+    "wc-react": "^0.3.0"
+  }
+}
