@@ -24,21 +24,28 @@
     "url": "https://github.com/nmetulev/mgt-react/issues"
   },
   "scripts": {
-    "build": "tsc",
-    "prepack": "npm run build"
+    "build": "npm run clean && npm run generate && tsc",
+    "clean": "node ./scripts/clean.js",
+    "prepack": "npm run build",
+    "generate": "node ./scripts/copyMgtSrc.js && wca analyze temp --format json --outFile temp/web-components.json && node ./scripts/generate.js"
   },
   "devDependencies": {
     "@types/react": "^16.9.32",
     "@types/react-dom": "^16.9.6",
+    "fs-extra": "^9.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "web-component-analyzer": "^1.0.3"
   },
   "prettier": {
     "printWidth": 120,
     "singleQuote": true
   },
   "dependencies": {
+    "@microsoft/mgt": "file:../microsoft-graph-toolkit",
+    "@microsoft/microsoft-graph-types": "^1.12.0",
+    "@microsoft/microsoft-graph-types-beta": "github:microsoftgraph/msgraph-typescript-typings#beta",
     "wc-react": "^0.3.0"
   }
 }
