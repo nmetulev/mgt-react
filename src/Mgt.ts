@@ -92,7 +92,7 @@ export class Mgt extends Wc {
 
     let template = this._templates[templateType];
     if (template) {
-      template = React.cloneElement(template, { ...dataContext });
+      template = React.cloneElement(template, { dataContext });
       ReactDOM.render(template, element);
     }
   }
