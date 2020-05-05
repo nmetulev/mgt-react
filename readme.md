@@ -76,15 +76,16 @@ All properties and events map exactly as they are defined on the web component.
 
 For example, to create a template to be used for rendering events in the `mgt-agenda` component, first define a component to be used for rendering an event:
 
-```jsx
-const MyEvent = (props) => {
-  return <div>{props.event.subject}</div>;
+```tsx
+const MyEvent = (props: MgtTemplateProps) => {
+  const { event } = props.dataContext;
+  return <div>{event.subject}</div>;
 };
 ```
 
 Then use it as a child of the wrapped component and set the template prop to `event`
 
-```jsx
+```tsx
 const Agenda = wrapMgt('mgt-agenda');
 
 const App = (props) => {
@@ -94,7 +95,7 @@ const App = (props) => {
 }
 ```
 
-The `template` prop allows you to specify which template to overwrite. In this case, the `MyEvent` component will be repeated for every event with the `event` prop being passed for each event.
+The `template` prop allows you to specify which template to overwrite. In this case, the `MyEvent` component will be repeated for every event, and the `event` object will be passed as part of the `dataContext` prop.
 
 ## Why
 

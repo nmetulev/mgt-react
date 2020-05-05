@@ -1,6 +1,6 @@
 {
   "name": "mgt-react",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Microsoft Graph Toolkit React wrapper class",
   "author": "metulev",
   "license": "MIT",
