@@ -2,5 +2,4 @@ dist
 node_modules
 temp
 web-components.json
-src/generated
 *.tgz

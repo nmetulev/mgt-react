@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/mgt-react?style=for-the-badge)](https://www.npmjs.com/package/mgt-react) ![GitHub](https://img.shields.io/github/license/nmetulev/mgt-react?style=for-the-badge)
 
-Use `mgt-react` to simplify usage of [Microsoft Graph Toolkit (mgt)](https://aka.ms/mgt) web components in React.
+Use `mgt-react` to simplify usage of [Microsoft Graph Toolkit (mgt)](https://aka.ms/mgt) web components in React. The library wraps all mgt components and exports them as React components.
 
 `mgt-react` extends [`wc-react`](https://github.com/nmetulev/wc-react) adding support for templates.
 
@@ -18,21 +18,21 @@ or
 yarn add mgt-react
 ```
 
+> Note: `mgt-react` does not import the Microsoft Graph Toolkit components automatically. Make sure to have the toolkit imported in your app somewhere:
+>
+> ```tsx
+> import `@microsoft/mgt`
+> ```
+
 ## Usage
 
-Import `wrapMgt` at the top:
+Import a component at the top:
 
 ```tsx
-import { wrapMgt } from 'mgt-react';
+import { Person } from 'mgt-react';
 ```
 
-Create a new React component that wraps the mgt web component by calling the `wrapMgt` function and pass the tag name of the web component.
-
-```tsx
-const Person = wrapMgt('mgt-person');
-```
-
-You can now use `Person` anywhere in your JSX as if it were a regular React component.
+You can now use `Person` anywhere in your JSX as a regular React component.
 
 ```tsx
 <Person personQuery="me" />
@@ -55,7 +55,7 @@ const App = (props) => {
 ### Register event handlers:
 
 ```jsx
-const PeoplePicker = wrapMgt('mgt-people-picker');
+import { PeoplePicker } from 'mgt-react';
 
 const App = (props) => {
   handleSelectionChanged = (e) => {
@@ -66,7 +66,7 @@ const App = (props) => {
 };
 ```
 
-All properties and events map exactly as they are defined on the web component.
+All properties and events map exactly as they are defined on the web component - [see web component docs](https://aka.ms/mgt-docs).
 
 ### Templates
 
@@ -77,6 +77,8 @@ All properties and events map exactly as they are defined on the web component.
 For example, to create a template to be used for rendering events in the `mgt-agenda` component, first define a component to be used for rendering an event:
 
 ```tsx
+import { MgtTemplateProps } from 'mgt-react';
+
 const MyEvent = (props: MgtTemplateProps) => {
   const { event } = props.dataContext;
   return <div>{event.subject}</div>;
@@ -86,7 +88,7 @@ const MyEvent = (props: MgtTemplateProps) => {
 Then use it as a child of the wrapped component and set the template prop to `event`
 
 ```tsx
-const Agenda = wrapMgt('mgt-agenda');
+import { Agenda } from 'mgt-react';
 
 const App = (props) => {
   return <Agenda>
@@ -96,6 +98,12 @@ const App = (props) => {
 ```
 
 The `template` prop allows you to specify which template to overwrite. In this case, the `MyEvent` component will be repeated for every event, and the `event` object will be passed as part of the `dataContext` prop.
+
+## What components can I use?
+
+The library is auto generated from the Microsoft Graph Toolkit and all components are available.
+
+The names of the React components are in PascalCase and do not include the `Mgt` prefix. For example, the `mgt-person` component is available as `Person`, and the `mgt-people-picker` component is available as `PeoplePicker`. See the [Microsoft Graph Toolkit documentation](https://aka.ms/mgt-docs) for a list of all components.
 
 ## Why
 
