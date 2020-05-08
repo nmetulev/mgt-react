@@ -131,6 +131,7 @@ export class Mgt extends Wc {
  * @param {(string | Function)} tag
  * @returns React component
  */
-export const wrapMgt = <T = WcProps>(tag: string | Function) => {
-  return (props: T) => React.createElement(Mgt, { type: tag, ...props });
+export const wrapMgt = <T = WcProps>(tag: string) => {
+  const component: React.FC<T> = (props: T) => React.createElement(Mgt, { type: tag, ...props });
+  return component;
 };
