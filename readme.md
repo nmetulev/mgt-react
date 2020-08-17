@@ -1,4 +1,4 @@
-> THIS package has moved to the [Microsoft Graph Toolkit repo](https://aka.ms/mgt). Please use the [@microsoft/mgt-react](https://www.npmjs.com/package/@microsoft/mgt-react) instead
+> This package has moved to the [Microsoft Graph Toolkit repo](https://aka.ms/mgt). Please use the [@microsoft/mgt-react](https://www.npmjs.com/package/@microsoft/mgt-react) instead
 
 # React wrapper for Microsoft Graph Toolkit
 
